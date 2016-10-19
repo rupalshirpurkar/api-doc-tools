@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E644802-B579-4037-9809-9CF4C7172C9D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>monodoc</RootNamespace>
+    <AssemblyName>monodoc</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+    <Folder Include="Assembly\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mono.Documentation\ManifestResourceResolver.cs" />
+    <Compile Include="Mono.Documentation\XmlDocUtils.cs" />
+    <Compile Include="Mono.Utilities\LRUCache.cs" />
+    <Compile Include="Mono.Utilities\colorizer.cs" />
+    <Compile Include="Monodoc\HelpSource.cs" />
+    <Compile Include="Monodoc\HelpSource_Legacy.cs" />
+    <Compile Include="Monodoc\Node.cs" />
+    <Compile Include="Monodoc\Node_Legacy.cs" />
+    <Compile Include="Monodoc\Provider.cs" />
+    <Compile Include="Monodoc\RootTree.cs" />
+    <Compile Include="Monodoc\RootTree_Legacy.cs" />
+    <Compile Include="Monodoc\SearchableDocument.cs" />
+    <Compile Include="Monodoc\SearchableIndex.cs" />
+    <Compile Include="Monodoc\Tree.cs" />
+    <Compile Include="Monodoc\TypeUtils.cs" />
+    <Compile Include="Monodoc\cache.cs" />
+    <Compile Include="Monodoc\generator.cs" />
+    <Compile Include="Monodoc\index.cs" />
+    <Compile Include="Monodoc\settings.cs" />
+    <Compile Include="Monodoc\settings_Legacy.cs" />
+    <Compile Include="Monodoc\storage.cs" />
+    <Compile Include="Monodoc\caches\FileCache.cs" />
+    <Compile Include="Monodoc\caches\NullCache.cs" />
+    <Compile Include="Monodoc\generators\HtmlGenerator.cs" />
+    <Compile Include="Monodoc\generators\RawGenerator.cs" />
+    <Compile Include="Monodoc\generators\html\Addin2Html.cs" />
+    <Compile Include="Monodoc\generators\html\Ecma2Html.cs" />
+    <Compile Include="Monodoc\generators\html\Ecmaspec2Html.cs" />
+    <Compile Include="Monodoc\generators\html\Error2Html.cs" />
+    <Compile Include="Monodoc\generators\html\Idem.cs" />
+    <Compile Include="Monodoc\generators\html\Man2Html.cs" />
+    <Compile Include="Monodoc\generators\html\MonoBook2Html.cs" />
+    <Compile Include="Monodoc\generators\html\Toc2Html.cs" />
+    <Compile Include="Monodoc\providers\EcmaDoc.cs" />
+    <Compile Include="Monodoc\providers\addins-provider.cs" />
+    <Compile Include="Monodoc\providers\ecma-provider.cs" />
+    <Compile Include="Monodoc\providers\ecmaspec-provider.cs" />
+    <Compile Include="Monodoc\providers\ecmauncompiled-provider.cs" />
+    <Compile Include="Monodoc\providers\error-provider.cs" />
+    <Compile Include="Monodoc\providers\man-provider.cs" />
+    <Compile Include="Monodoc\providers\xhtml-provider.cs" />
+    <Compile Include="Monodoc\storage\NullStorage.cs" />
+    <Compile Include="Monodoc\storage\UncompiledDocStorage.cs" />
+    <Compile Include="Monodoc\storage\ZipStorage.cs" />
+    <Compile Include="Monodoc.Ecma\EcmaDesc.cs" />
+    <Compile Include="Monodoc.Ecma\EcmaUrlTokenizer.cs" />
+    <Compile Include="Monodoc.Ecma\prebuilt\EcmaUrlParser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lminus.gif" />
+    <None Include="Resources\Lplus.gif" />
+    <None Include="Resources\creativecommons.png" />
+    <None Include="Resources\ecmaspec-html-css.xsl" />
+    <None Include="Resources\ecmaspec-html.xsl" />
+    <None Include="Resources\ecmaspec.css" />
+    <None Include="Resources\helper.js" />
+    <None Include="Resources\home.html" />
+    <None Include="Resources\mdoc-html-format.xsl" />
+    <None Include="Resources\mdoc-html-utils.xsl" />
+    <None Include="Resources\mdoc-sections-css.xsl" />
+    <None Include="Resources\mdoc-sections.xsl" />
+    <None Include="Resources\mono-ecma-css.xsl" />
+    <None Include="Resources\mono-ecma-impl.xsl" />
+    <None Include="Resources\mono-ecma.css" />
+    <None Include="Resources\mono-ecma.xsl" />
+    <None Include="Resources\toc-html.xsl" />
+    <None Include="Resources\images\bc_bg.png" />
+    <None Include="Resources\images\bc_separator.png" />
+    <None Include="Resources\images\error.png" />
+    <None Include="Resources\images\hatch.png" />
+    <None Include="Resources\images\headerbg.png" />
+    <None Include="Resources\images\help.png" />
+    <None Include="Resources\images\house.png" />
+    <None Include="Resources\images\members.png" />
+    <None Include="Resources\images\namespace.png" />
+    <None Include="Resources\images\privclass.png" />
+    <None Include="Resources\images\privdelegate.png" />
+    <None Include="Resources\images\privenumeration.png" />
+    <None Include="Resources\images\privevent.png" />
+    <None Include="Resources\images\privextension.png" />
+    <None Include="Resources\images\privfield.png" />
+    <None Include="Resources\images\privinterface.png" />
+    <None Include="Resources\images\privmethod.png" />
+    <None Include="Resources\images\privproperty.png" />
+    <None Include="Resources\images\privstructure.png" />
+    <None Include="Resources\images\protclass.png" />
+    <None Include="Resources\images\protdelegate.png" />
+    <None Include="Resources\images\protenumeration.png" />
+    <None Include="Resources\images\protevent.png" />
+    <None Include="Resources\images\protextension.png" />
+    <None Include="Resources\images\protfield.png" />
+    <None Include="Resources\images\protinterface.png" />
+    <None Include="Resources\images\protmethod.png" />
+    <None Include="Resources\images\protproperty.png" />
+    <None Include="Resources\images\protstructure.png" />
+    <None Include="Resources\images\pubclass.png" />
+    <None Include="Resources\images\pubdelegate.png" />
+    <None Include="Resources\images\pubenumeration.png" />
+    <None Include="Resources\images\pubevent.png" />
+    <None Include="Resources\images\pubextension.png" />
+    <None Include="Resources\images\pubfield.png" />
+    <None Include="Resources\images\pubinterface.png" />
+    <None Include="Resources\images\pubmethod.png" />
+    <None Include="Resources\images\pubproperty.png" />
+    <None Include="Resources\images\pubstructure.png" />
+    <None Include="Resources\images\reference.png" />
+    <None Include="Resources\images\treebg.png" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\base.css" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -3,3 +3,8 @@
 /Test/DocTest.*
 /.v2.txt
 /.v0.txt
+packages
+*.userprefs
+*.user
+bin
+obj
