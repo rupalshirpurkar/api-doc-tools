@@ -74,9 +74,8 @@ namespace Mono.Documentation {
 			get {
 				if (member == null)
 					throw new ArgumentNullException ("member");
-
-				var memberDef = member.Resolve ();
-				if (memberDef == null) {
+				
+				if (member.IsDefinition) {
 					ArrayType array = member.DeclaringType as ArrayType;
 					if (array != null && array.Rank > 1) {
 						// Multi-dimensional array; the member is runtime generated, 

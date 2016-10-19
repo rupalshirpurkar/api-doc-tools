@@ -3237,7 +3237,7 @@ static class DocUtils {
 		HashSet<string> inheritedInterfaces = GetInheritedInterfaces (type);
 		List<TypeReference> userInterfaces = new List<TypeReference> ();
 		foreach (var ii in type.Interfaces) {
-			var iface = ii.InterfaceType;
+			var iface = ii;
 			TypeReference lookup = iface.Resolve () ?? iface;
 			if (!inheritedInterfaces.Contains (GetQualifiedTypeName (lookup)))
 				userInterfaces.Add (iface);
@@ -3257,8 +3257,8 @@ static class DocUtils {
 		a = t => {
 			if (t == null) return;
 			foreach (var r in t.Interfaces) {
-				inheritedInterfaces.Add (GetQualifiedTypeName (r.InterfaceType));
-				a (r.InterfaceType.Resolve ());
+				inheritedInterfaces.Add (GetQualifiedTypeName (r));
+				a (r.Resolve ());
 			}
 		};
 		TypeReference baseRef = type.BaseType;
@@ -3272,7 +3272,7 @@ static class DocUtils {
 				baseRef = null;
 		}
 		foreach (var r in type.Interfaces)
-			a (r.InterfaceType.Resolve ());
+			a (r.Resolve ());
 		return inheritedInterfaces;
 	}
 }
@@ -4350,7 +4350,7 @@ public abstract class MemberFormatter {
 	
 	public string GetDeclaration (MemberReference mreference)
 	{
-		return GetDeclaration (mreference.Resolve ());
+		return GetDeclaration (mreference);
 	}
 
 	string GetDeclaration (IMemberDefinition member)
@@ -4617,8 +4617,8 @@ class ILFullMemberFormatter : MemberFormatter {
 				buf.Append (full.GetName (type.BaseType).Substring ("class ".Length));
 		}
 		bool first = true;
-		foreach (var name in type.Interfaces.Where (i => MDocUpdater.IsPublic (i.InterfaceType.Resolve ()))
-				.Select (i => full.GetName (i.InterfaceType))
+		foreach (var name in type.Interfaces.Where (i => MDocUpdater.IsPublic (i.Resolve ()))
+				.Select (i => full.GetName (i))
 				.OrderBy (n => n)) {
 			if (first) {
 				buf.Append (" implements ");
